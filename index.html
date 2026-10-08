@@ -3,18 +3,184 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Проєкт КМІТ</title>
+<title>Стікери спільноти КМІТ</title>
+<meta name="description" content="Набір із 8 стікерів для Telegram спільноти КМІТ НТУ «ХПІ» — приклад напряму «ШІ-дизайн».">
+<link rel="icon" href="stickers/05-kmit-khpi.svg" type="image/svg+xml">
 <style>
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #F6F5F0; color: #121826; font-family: system-ui, sans-serif; padding: 16px; }
-  main { max-width: 560px; text-align: center; }
-  h1 { font-size: 28px; }
-  p { color: #4A5263; line-height: 1.5; }
+  :root {
+    --bg: #FBF6EC;
+    --card: #FFFFFF;
+    --ink: #121826;
+    --muted: #5A5F6E;
+    --orange: #F28C28;
+    --orange-soft: #FDE9D3;
+    --blue: #3B6FD8;
+    --blue-soft: #E3EBFB;
+    --line: #EADFCB;
+    --radius: 20px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 48px 0 24px; }
+  .tag {
+    display: inline-block; font-weight: 700; font-size: 14px; letter-spacing: .02em;
+    color: var(--blue); background: var(--blue-soft); padding: 4px 12px; border-radius: 999px;
+  }
+  h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.1; margin: 14px 0 12px; letter-spacing: -0.01em; }
+  h1 span { color: var(--orange); }
+  .lead { font-size: 18px; color: var(--muted); max-width: 680px; margin: 0; }
+  .note {
+    margin: 20px 0 0; max-width: 680px; padding: 14px 18px; border-radius: 14px;
+    background: var(--orange-soft); border: 1px solid #F6CFA4; font-size: 16px;
+  }
+  .grid {
+    list-style: none; margin: 24px 0 0; padding: 0;
+    display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 14px 14px 16px; display: flex; flex-direction: column; gap: 8px;
+    box-shadow: 0 1px 0 rgba(18,24,38,.03), 0 8px 24px -16px rgba(18,24,38,.25);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -18px rgba(18,24,38,.35); }
+  .pic {
+    aspect-ratio: 1; border-radius: 14px; display: grid; place-items: center;
+    background:
+      radial-gradient(circle at 30% 25%, #FFF8EC 0, transparent 60%),
+      repeating-conic-gradient(#F3ECDD 0 25%, #FAF5EA 0 50%) 0 0 / 24px 24px;
+  }
+  .pic img { width: 92%; height: auto; display: block; }
+  .card h2 { font-size: 18px; margin: 4px 2px 0; line-height: 1.25; }
+  .card p { margin: 0 2px; color: var(--muted); font-size: 14px; }
+  .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 6px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 40px;
+    padding: 8px 14px; border-radius: 12px; font-weight: 700; font-size: 15px; text-decoration: none;
+    background: var(--blue); color: #fff;
+  }
+  .btn:hover { background: #2E5CC0; }
+  .btn.ghost { background: transparent; color: var(--blue); border: 2px solid var(--blue-soft); }
+  .btn.ghost:hover { border-color: var(--blue); }
+  .btn:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+  section.howto {
+    margin: 40px 0 0; background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px 20px;
+  }
+  section.howto h2 { margin: 0 0 6px; font-size: 24px; }
+  section.howto > p { margin: 0 0 14px; color: var(--muted); }
+  ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 12px; }
+  ol.steps li { counter-increment: s; display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; }
+  ol.steps li::before {
+    content: counter(s); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--orange); color: #fff; font-weight: 800;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .92em;
+    background: var(--blue-soft); color: #1E3F8A; padding: 1px 6px; border-radius: 6px;
+  }
+  .tip { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 15px; }
+  footer a { color: var(--blue); font-weight: 600; }
+  .motto { font-weight: 800; color: var(--ink); }
+  @media (max-width: 520px) {
+    header { padding-top: 32px; }
+    .lead { font-size: 16px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .card { padding: 10px 10px 12px; }
+    .card h2 { font-size: 16px; }
+    .card p { display: none; }
+    .btn { font-size: 14px; padding: 8px 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>Тут буде проєкт</h1>
-  <p>Завантажте файли свого застосунку в репозиторій — і ця сторінка заміниться на нього. Інструкція — у README репозиторію.</p>
-</main>
+<div class="wrap">
+  <header>
+    <span class="tag">ШІ-дизайн · #КМІТ_ХПІ</span>
+    <h1>Стікери спільноти <span>КМІТ</span></h1>
+    <p class="lead">Вісім стікерів для Telegram про листове штампування, витягування, кування, моделювання в QForm і ШІ — для чатів кафедри КМІТ НТУ «ХПІ».</p>
+    <p class="note">Приклад напряму «ШІ-дизайн»: стікери створив ШІ (Claude) за текстовим описом. Студенти роблять подібне в Gemini.</p>
+  </header>
+
+  <main>
+    <ul class="grid">
+      <li class="card">
+        <div class="pic"><img src="stickers/01-shtampuiemo-idei.png" width="512" height="512" alt="Пуансон штампує лист у матриці, підпис «Штампуємо ідеї!»" loading="lazy"></div>
+        <h2>Штампуємо ідеї!</h2>
+        <p>Пуансон, матриця і лист — листове штампування.</p>
+        <div class="links"><a class="btn" href="stickers/01-shtampuiemo-idei.png" download>PNG</a><a class="btn ghost" href="stickers/01-shtampuiemo-idei.svg" download>SVG</a></div>
+      </li>
+      <li class="card">
+        <div class="pic"><img src="stickers/02-vytiahnuto.png" width="512" height="512" alt="Плоска кругла заготовка перетворюється на алюмінієву банку, підпис «Витягнуто!»" loading="lazy"></div>
+        <h2>Витягнуто!</h2>
+        <p>Холодне витягування: кругла заготовка → корпус банки.</p>
+        <div class="links"><a class="btn" href="stickers/02-vytiahnuto.png" download>PNG</a><a class="btn ghost" href="stickers/02-vytiahnuto.svg" download>SVG</a></div>
+      </li>
+      <li class="card">
+        <div class="pic"><img src="stickers/03-kuiu-maibutnie.png" width="512" height="512" alt="Молот кує розпечену заготовку на ковадлі, підпис «Кую своє майбутнє»" loading="lazy"></div>
+        <h2>Кую своє майбутнє</h2>
+        <p>Молот, ковадло і розпечена заготовка — кування.</p>
+        <div class="links"><a class="btn" href="stickers/03-kuiu-maibutnie.png" download>PNG</a><a class="btn ghost" href="stickers/03-kuiu-maibutnie.svg" download>SVG</a></div>
+      </li>
+      <li class="card">
+        <div class="pic"><img src="stickers/04-zmodeliui-spochatku.png" width="512" height="512" alt="Вікно програми із сіткою деформацій осадженої заготовки, підпис «Змоделюй спочатку»" loading="lazy"></div>
+        <h2>Змоделюй спочатку</h2>
+        <p>Сітка деформацій під час осадження — як у QForm.</p>
+        <div class="links"><a class="btn" href="stickers/04-zmodeliui-spochatku.png" download>PNG</a><a class="btn ghost" href="stickers/04-zmodeliui-spochatku.svg" download>SVG</a></div>
+      </li>
+      <li class="card">
+        <div class="pic"><img src="stickers/05-kmit-khpi.png" width="512" height="512" alt="Бейдж-шестерня зі стрічкою «#КМІТ_ХПІ»" loading="lazy"></div>
+        <h2>#КМІТ_ХПІ</h2>
+        <p>Бейдж спільноти — для своїх.</p>
+        <div class="links"><a class="btn" href="stickers/05-kmit-khpi.png" download>PNG</a><a class="btn ghost" href="stickers/05-kmit-khpi.svg" download>SVG</a></div>
+      </li>
+      <li class="card">
+        <div class="pic"><img src="stickers/06-kozhen-avtor.png" width="512" height="512" alt="Усміхнений студент за ноутбуком, підпис «Кожен — автор»" loading="lazy"></div>
+        <h2>Кожен — автор</h2>
+        <p>Девіз спільноти: кожен учасник — автор.</p>
+        <div class="links"><a class="btn" href="stickers/06-kozhen-avtor.png" download>PNG</a><a class="btn ghost" href="stickers/06-kozhen-avtor.svg" download>SVG</a></div>
+      </li>
+      <li class="card">
+        <div class="pic"><img src="stickers/07-shi-metal.png" width="512" height="512" alt="Чіп із шестернею та іскрою, підпис «ШІ + метал»" loading="lazy"></div>
+        <h2>ШІ + метал</h2>
+        <p>Штучний інтелект у обробці тиском.</p>
+        <div class="links"><a class="btn" href="stickers/07-shi-metal.png" download>PNG</a><a class="btn ghost" href="stickers/07-shi-metal.svg" download>SVG</a></div>
+      </li>
+      <li class="card">
+        <div class="pic"><img src="stickers/08-zalik-zarakhovano.png" width="512" height="512" alt="Витягнутий стакан із галочкою і штамп «Залік зараховано»" loading="lazy"></div>
+        <h2>Залік зараховано</h2>
+        <p>Стакан після витягування — і оцінка в кишені.</p>
+        <div class="links"><a class="btn" href="stickers/08-zalik-zarakhovano.png" download>PNG</a><a class="btn ghost" href="stickers/08-zalik-zarakhovano.svg" download>SVG</a></div>
+      </li>
+    </ul>
+
+    <section class="howto" aria-labelledby="howto-title">
+      <h2 id="howto-title">Як додати в Telegram</h2>
+      <p>Власний набір стікерів робиться за кілька хвилин через офіційного бота.</p>
+      <ol class="steps">
+        <li><div>Відкрийте бота <a href="https://t.me/Stickers">@Stickers</a> і надішліть команду <code>/newpack</code>, далі вкажіть назву набору.</div></li>
+        <li><div>Надішліть PNG-файл стікера <b>як файл</b> (не як фото). Формат — 512×512 пікселів із прозорим тлом, усі файли тут саме такі.</div></li>
+        <li><div>Надішліть емодзі, з яким асоціюється стікер (наприклад, 🔨 або 🤖). Повторіть кроки 2–3 для кожного стікера.</div></li>
+        <li><div>Надішліть <code>/publish</code>, оберіть іконку набору та коротке посилання — готово, діліться ним у чаті!</div></li>
+      </ol>
+      <p class="tip">SVG-версії — для друку, презентацій і доопрацювання: їх можна збільшувати без втрати якості.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p class="motto">«Кожен учасник — автор».</p>
+    <p>Спільнота студентів кафедри комп’ютерного моделювання та інтегрованих технологій обробки тиском (КМІТ) НТУ «ХПІ», Харків. Інші проєкти — на <a href="https://github.com/kmit-khpi">github.com/kmit-khpi</a>.</p>
+  </footer>
+</div>
 </body>
 </html>
